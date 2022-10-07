@@ -9,7 +9,7 @@ pipeline {
     }
     stage('hello') {
       steps {
-        sh 'python3 hello.py'
+        sh 'python3 /Users/fw_build_server/hello.py'
       }
     }
   }
