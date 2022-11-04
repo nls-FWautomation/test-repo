@@ -9,7 +9,7 @@ pipeline {
     }
     stage('hello') {
       steps {
-        sh 'git checkout main'
+        //sh 'git checkout main'
         sh 'python3 /Users/fw_build_server/hello.py'
       }
     }
@@ -19,12 +19,13 @@ pipeline {
         // to that repository using username and password.
         withCredentials([usernamePassword(credentialsId: 'GitHub-PAT', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
           
-          sh('git add . -v')
+          sh('git add -v .')
           sh('git status')
           sh('git commit -m "Test Commit-${BUILD_NUMBER}"')
+          sh('git status')
           sh('git branch')
           sh('pwd')
-          sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nls-FWautomation/test-repo.git')
+          sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nls-FWautomation/test-repo.git HEAD:main')
         }
 
       }
