@@ -19,12 +19,14 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'GitHub-Pat', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
         sh("git tag -a some_tag -m 'Jenkins'")
         sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/nls-FWautomation/test-repo.git --tags')
-}
+        }
       }
     }
-    post {
+  }
+  post {
     always {
-      deleteDir()
+      echo 'post:  where to delete dir'
+      //deleteDir()
     }
     success {
       mail to:"dcraft@nautilus.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
