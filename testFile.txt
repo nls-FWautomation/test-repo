@@ -5,3 +5,5 @@
  This text has been newly appended on the sample file
  This text has been newly appended on the sample file
  This text has been newly appended on the sample file
+ This text has been newly appended on the sample file
+ This text has been newly appended on the sample file
