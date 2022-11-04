@@ -12,6 +12,12 @@ pipeline {
         sh 'git checkout main'
         sh('git pull')
         sh 'python3 /Users/fw_build_server/hello.py'
+        sh('git status')
+        sh('git add .')
+        sh('git status')
+        sh 'git commit -m "Test Commit-${BUILD_NUMBER}"' 
+        sh('git status')
+        sh('git branch')
       }
     }
     stage('deploy') {
@@ -19,10 +25,6 @@ pipeline {
         // credentialsId here is the credentials you have set up in Jenkins for pushing
         // to that repository using username and password.
         withCredentials([usernamePassword(credentialsId: 'GitHub-PAT', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-          sh('git status')
-          sh('git add .')
-          sh('git status')
-          sh('git commit -m "Test Commit-${BUILD_NUMBER}"')
           sh('git status')
           sh('git branch')
           sh('pwd')
