@@ -17,9 +17,9 @@ pipeline {
         // credentialsId here is the credentials you have set up in Jenkins for pushing
         // to that repository using username and password.
         withCredentials([usernamePassword(credentialsId: 'GitHub-Pat', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-        sh("git tag -a some_tag -m 'Jenkins'")
-        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/nls-FWautomation/test-repo.git --tags')
+          sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nls-FWautomation/test-repo.git')
         }
+
       }
     }
   }
@@ -28,11 +28,11 @@ pipeline {
       echo 'post:  where to delete dir'
       //deleteDir()
     }
-    success {
-      mail to:"dcraft@nautilus.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
-    }
-    failure {
-      mail to:"dcraft@nautilus.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
-    }
+    // success {
+    //   mail to:"dcraft@nautilus.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
+    // }
+    // failure {
+    //   mail to:"dcraft@nautilus.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
+    // }
   }
 }
