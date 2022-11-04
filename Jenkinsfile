@@ -15,7 +15,7 @@ pipeline {
         sh 'touch ${BUILD_NUMBER}.txt'
         sh 'python3 /Users/fw_build_server/hello.py'
         sh('git status')
-        sh('git add -A')
+        sh('git add --all')
         sh('git status')
         sh 'git commit -am "Test Commit-${BUILD_NUMBER}"' 
         sh('git status')
