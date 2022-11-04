@@ -10,6 +10,7 @@ pipeline {
     stage('hello') {
       steps {
         sh 'git checkout main'
+        sh('git pull')
         sh 'python3 /Users/fw_build_server/hello.py'
       }
     }
