@@ -16,7 +16,7 @@ pipeline {
       steps {
         // credentialsId here is the credentials you have set up in Jenkins for pushing
         // to that repository using username and password.
-        withCredentials([usernamePassword(credentialsId: 'GitHub-Pat', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+        withCredentials([usernamePassword(credentialsId: 'GitHub-PAT', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
           sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nls-FWautomation/test-repo.git')
         }
 
