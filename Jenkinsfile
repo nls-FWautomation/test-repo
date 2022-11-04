@@ -30,6 +30,7 @@ pipeline {
           sh('git status')
           sh('git branch')
           sh('pwd')
+          sh("git tag -a ${BUILD_TAG} -m 'Jenkins build ${BUILD_NUMBER}'")
           sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nls-FWautomation/test-repo.git')
         }
 
