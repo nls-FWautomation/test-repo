@@ -44,16 +44,6 @@ pipeline {
         sh('git branch')
       }
     }
-    stage('createPR') {
-      steps {
-        sh('pwd')
-        sh('git branch')
-        sh('git status')
-        sh('git request-pull main ./')
-        sh('git status')
-        sh('git branch')
-      }
-    }
     stage('deploy') {
       steps {
         // credentialsId here is the credentials you have set up in Jenkins for pushing
