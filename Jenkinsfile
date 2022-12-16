@@ -31,7 +31,6 @@ pipeline {
         sh('git branch')
       }
     }
-    git checkout -b <new_branch_name>
     stage('deploy') {
       steps {
         // credentialsId here is the credentials you have set up in Jenkins for pushing
