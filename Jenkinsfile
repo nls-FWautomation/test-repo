@@ -15,6 +15,15 @@ pipeline {
         sh 'touch ${BUILD_NUMBER}.txt'
         sh 'python3 /Users/fw_build_server/hello.py'
         sh('git status')
+        sh('git branch')
+      }
+    }
+    stage('newBranch') {
+      steps {
+        sh 'git checkout -b build_automation_${BUILD_NUMBER}'
+        sh('pwd')
+        sh('git branch')
+        sh('git status')
         sh('git add --all')
         sh('git status')
         sh 'git commit -am "Test Commit-${BUILD_NUMBER}"' 
@@ -22,6 +31,7 @@ pipeline {
         sh('git branch')
       }
     }
+    git checkout -b <new_branch_name>
     stage('deploy') {
       steps {
         // credentialsId here is the credentials you have set up in Jenkins for pushing
