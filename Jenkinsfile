@@ -73,6 +73,7 @@ pipeline {
     always {
       echo 'post:  where to delete dir'
       //deleteDir()
+      cleanWs()
     }
     // success {
     //   mail to:"dcraft@nautilus.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
