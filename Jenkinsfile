@@ -7,13 +7,11 @@ pipeline {
         sh 'python3 --version'
       }
     }
-    stage('hello') {
+    stage('checkout') {
       steps {
         sh 'git checkout main'
         sh('git pull')
         sh('pwd')
-        sh 'touch ${BUILD_NUMBER}.txt'
-        sh 'python3 /Users/fw_build_server/hello.py'
         sh('git status')
         sh('git branch')
       }
@@ -24,6 +22,21 @@ pipeline {
         sh('pwd')
         sh('git branch')
         sh('git status')
+      }
+    }
+    stage('buildFile') {
+      steps {
+        sh 'touch ${BUILD_NUMBER}.txt'
+        sh 'python3 /Users/fw_build_server/hello.py'
+        sh('git status')
+        sh('git branch')
+      }
+    }
+    stage('commitChanges') {
+      steps {
+        sh('pwd')
+        sh('git branch')
+        sh('git status')
         sh('git add --all')
         sh('git status')
         sh 'git commit -am "Test Commit-${BUILD_NUMBER}"' 
@@ -31,7 +44,7 @@ pipeline {
         sh('git branch')
       }
     }
-    stage('cratePR') {
+    stage('createPR') {
       steps {
         sh('pwd')
         sh('git branch')
