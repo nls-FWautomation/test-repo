@@ -39,6 +39,8 @@ pipeline {
         sh('git status')
         sh('git add --all')
         sh('git status')
+        sh('git reset HEAD -- 22.txt')
+        sh('git status')
         sh 'git commit -am "Test Commit-${BUILD_NUMBER}"' 
         sh('git status')
         sh('git branch')
